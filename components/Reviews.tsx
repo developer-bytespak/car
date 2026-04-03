@@ -8,14 +8,14 @@ const reviews = [
   {
     name: 'James M.',
     initials: 'JM',
-    gradient: 'from-neon-orange to-fire-light',
+    gradient: 'from-brand-orange to-amber-400',
     quote: 'Absolutely amazing results. My car looks brand new — the interior transformation was unbelievable. Will book every month!',
     platform: 'Google',
   },
   {
     name: 'Sarah R.',
     initials: 'SR',
-    gradient: 'from-neon-blue to-ice-dark',
+    gradient: 'from-brand-blue to-sky-400',
     quote: 'Super convenient — they came right to my house. The Premium Detail was worth every penny. Highly recommended!',
     platform: 'Google',
   },
@@ -36,7 +36,7 @@ const reviews = [
   {
     name: 'Lisa W.',
     initials: 'LW',
-    gradient: 'from-neon-orange to-neon-blue',
+    gradient: 'from-brand-orange to-brand-blue',
     quote: 'Had pet hair everywhere and stains on the seats. After their service, the car smelled and looked like it just rolled off the lot.',
     platform: 'Google',
   },
@@ -71,22 +71,19 @@ export default function Reviews() {
   }
 
   return (
-    <section id="reviews" className="relative py-20 md:py-32 px-5 md:px-10 overflow-hidden">
-      <div className="absolute inset-0 bg-dark-mid" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(0,174,239,0.06),transparent_60%)] pointer-events-none" />
-
+    <section id="reviews" className="relative py-20 md:py-32 px-5 md:px-10 overflow-hidden bg-light-bg">
       <div ref={ref} className="max-w-6xl mx-auto relative z-10">
         <AnimatedSection variant="fade-up" className="text-center mb-16">
-          <span className="text-neon-blue text-[11px] tracking-[3px] font-bold uppercase">
+          <span className="text-brand-blue text-[11px] tracking-[3px] font-bold uppercase">
             TESTIMONIALS
           </span>
-          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-white mt-3">
-            WHAT CUSTOMERS <span className="text-neon-blue text-neon-glow">SAY</span>
+          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-heading mt-3">
+            WHAT CUSTOMERS <span className="text-brand-blue">SAY</span>
           </h2>
 
           {/* Rating display */}
           <div className="flex items-center justify-center gap-4 mt-6">
-            <span className="font-display text-5xl text-white">5.0</span>
+            <span className="font-display text-5xl text-heading">5.0</span>
             <div>
               <div className="flex gap-0.5">
                 {[...Array(5)].map((_, i) => (
@@ -100,10 +97,10 @@ export default function Reviews() {
                   </motion.div>
                 ))}
               </div>
-              <p className="text-slate-600 text-xs mt-1">Based on 500+ reviews</p>
+              <p className="text-muted text-xs mt-1">Based on 500+ reviews</p>
             </div>
           </div>
-          <div className="glow-divider max-w-[200px] mx-auto mt-6" />
+          <div className="section-divider max-w-[200px] mx-auto mt-6" />
         </AnimatedSection>
 
         {/* Review cards - carousel */}
@@ -116,13 +113,13 @@ export default function Reviews() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
                 whileHover={{
-                  y: -8,
-                  boxShadow: '0 20px 60px rgba(0,174,239,0.1)',
+                  y: -4,
+                  boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
                 }}
-                className="glass-card card-shine rounded-2xl p-7 relative group transition-all duration-500"
+                className="bg-white border border-light-border rounded-2xl p-7 relative group transition-all duration-500 shadow-[0_10px_30px_rgba(0,0,0,0.05)]"
               >
                 {/* Quote icon */}
-                <Quote size={30} className="text-neon-blue/10 mb-3" />
+                <Quote size={30} className="text-brand-blue/15 mb-3" />
 
                 {/* Stars */}
                 <div className="flex gap-0.5 mb-4">
@@ -132,25 +129,25 @@ export default function Reviews() {
                 </div>
 
                 {/* Quote text */}
-                <p className="text-slate-400 text-[13px] leading-relaxed italic mb-6">
+                <p className="text-body text-[13px] leading-relaxed italic mb-6">
                   &ldquo;{review.quote}&rdquo;
                 </p>
 
                 {/* Author */}
                 <div className="flex items-center gap-3">
                   <div
-                    className={`bg-gradient-to-br ${review.gradient} w-10 h-10 rounded-full flex items-center justify-center text-[11px] font-bold text-white shadow-lg`}
+                    className={`bg-gradient-to-br ${review.gradient} w-10 h-10 rounded-full flex items-center justify-center text-[11px] font-bold text-white shadow-md`}
                   >
                     {review.initials}
                   </div>
                   <div>
-                    <span className="text-white text-sm font-semibold block">{review.name}</span>
-                    <span className="text-slate-600 text-xs">via {review.platform}</span>
+                    <span className="text-heading text-sm font-semibold block">{review.name}</span>
+                    <span className="text-muted text-xs">via {review.platform}</span>
                   </div>
                 </div>
 
-                {/* Hover glow border */}
-                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-neon-blue/20 transition-colors duration-500 pointer-events-none" />
+                {/* Hover border */}
+                <div className="absolute inset-0 rounded-2xl border border-transparent group-hover:border-brand-blue/20 transition-colors duration-500 pointer-events-none" />
               </motion.div>
             ))}
           </div>
@@ -161,7 +158,7 @@ export default function Reviews() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={prev}
-              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white hover:border-neon-blue/30 transition-colors"
+              className="w-10 h-10 rounded-full bg-white border border-light-border shadow-sm flex items-center justify-center text-body hover:border-brand-blue/30 transition-colors"
             >
               <ChevronLeft size={18} />
             </motion.button>
@@ -174,8 +171,8 @@ export default function Reviews() {
                   onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i) }}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     i === current
-                      ? 'w-6 bg-neon-blue shadow-[0_0_10px_rgba(0,174,239,0.5)]'
-                      : 'w-2 bg-white/20 hover:bg-white/40'
+                      ? 'w-6 bg-brand-blue'
+                      : 'w-2 bg-light-border hover:bg-muted'
                   }`}
                 />
               ))}
@@ -185,7 +182,7 @@ export default function Reviews() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={next}
-              className="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white hover:border-neon-blue/30 transition-colors"
+              className="w-10 h-10 rounded-full bg-white border border-light-border shadow-sm flex items-center justify-center text-body hover:border-brand-blue/30 transition-colors"
             >
               <ChevronRight size={18} />
             </motion.button>

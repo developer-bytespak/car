@@ -22,7 +22,7 @@ const plans = [
   {
     name: 'PREMIUM DETAIL',
     price: '$189',
-    color: '#00AEEF',
+    color: '#0EA5E9',
     features: [
       'Everything in Basic Shine',
       'Deep Interior Vacuum',
@@ -38,7 +38,7 @@ const plans = [
   {
     name: 'ULTIMATE DETAIL',
     price: '$299+',
-    color: '#FF6A00',
+    color: '#F97316',
     features: [
       'Everything in Premium Detail',
       'Carpet Shampoo Extraction',
@@ -66,22 +66,19 @@ export default function Packages() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
   return (
-    <section id="packages" className="relative py-20 md:py-32 px-5 md:px-10 overflow-hidden">
-      <div className="absolute inset-0 bg-dark-mid" />
-      <div className="absolute inset-0 section-glow-blue pointer-events-none" />
-
+    <section id="packages" className="relative py-20 md:py-32 px-5 md:px-10 overflow-hidden bg-light-bg">
       <div className="max-w-5xl mx-auto relative z-10">
         <AnimatedSection variant="fade-up" className="text-center mb-16">
-          <span className="text-neon-orange text-[11px] tracking-[3px] font-bold uppercase">
+          <span className="text-brand-orange text-[11px] tracking-[3px] font-bold uppercase">
             TRANSPARENT PRICING
           </span>
-          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-white mt-3">
-            DETAILING <span className="text-neon-blue text-neon-glow">PACKAGES</span>
+          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-heading mt-3">
+            DETAILING <span className="text-brand-blue">PACKAGES</span>
           </h2>
-          <p className="text-slate-600 text-base mt-3">
+          <p className="text-muted text-base mt-3">
             No hidden fees. No surprises. Just results.
           </p>
-          <div className="glow-divider max-w-[200px] mx-auto mt-6" />
+          <div className="section-divider max-w-[200px] mx-auto mt-6" />
         </AnimatedSection>
 
         <motion.div
@@ -100,41 +97,26 @@ export default function Packages() {
               }}
               onHoverStart={() => setHoveredIndex(i)}
               onHoverEnd={() => setHoveredIndex(null)}
-              whileHover={{ y: -12, scale: plan.popular ? 1.03 : 1.02 }}
-              className={`relative glass-card rounded-2xl p-8 transition-all duration-500 flex flex-col ${
-                plan.popular ? 'md:-mt-6 md:pt-10' : ''
+              whileHover={{ y: -4, scale: plan.popular ? 1.03 : 1.02 }}
+              className={`relative bg-white border rounded-2xl p-8 transition-all duration-500 flex flex-col ${
+                plan.popular
+                  ? 'md:-mt-6 md:pt-10 border-2 border-brand-blue shadow-[0_20px_50px_rgba(14,165,233,0.12)]'
+                  : 'border-light-border'
               }`}
               style={{
                 boxShadow: hoveredIndex === i
-                  ? `0 25px 60px ${plan.color}20, 0 0 40px ${plan.color}10`
+                  ? '0 25px 50px rgba(0,0,0,0.1)'
                   : plan.popular
-                  ? `0 0 40px ${plan.color}15`
-                  : 'none',
+                  ? '0 20px 50px rgba(14,165,233,0.12)'
+                  : '0 10px 30px rgba(0,0,0,0.05)',
               }}
             >
-              {/* Animated gradient border for popular plan */}
-              {plan.popular && (
-                <div
-                  className="absolute inset-0 rounded-2xl pointer-events-none"
-                  style={{
-                    padding: '1.5px',
-                    background: 'linear-gradient(135deg, #00AEEF, #FF6A00, #00AEEF)',
-                    backgroundSize: '300% 300%',
-                    animation: 'gradientShift 4s ease infinite',
-                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    WebkitMaskComposite: 'xor',
-                    mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
-                    maskComposite: 'exclude',
-                  }}
-                />
-              )}
-
               {/* Popular badge */}
               {plan.popular && (
                 <motion.span
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-neon-blue to-ice-dark text-white text-[10px] font-black tracking-[2px] px-5 py-1.5 rounded-full whitespace-nowrap z-20 shadow-[0_0_20px_rgba(0,174,239,0.4)]"
+                  className="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-blue text-white text-[10px] font-black tracking-[2px] px-5 py-1.5 rounded-full whitespace-nowrap z-20 shadow-[0_4px_15px_rgba(14,165,233,0.3)]"
                 >
                   <Star size={10} className="inline mr-1 -mt-0.5" />
                   MOST POPULAR
@@ -157,12 +139,12 @@ export default function Packages() {
                 {plan.price}
               </div>
 
-              <div className="glow-divider my-5" />
+              <div className="section-divider my-5" />
 
               {/* Features */}
               <ul className="space-y-3 mb-6">
                 {plan.features.map((f) => (
-                  <li key={f} className="text-slate-400 text-[13px] flex items-start gap-3">
+                  <li key={f} className="text-body text-[13px] flex items-start gap-3">
                     <Check size={14} className="flex-shrink-0 mt-0.5" style={{ color: plan.color }} />
                     {f}
                   </li>
@@ -170,7 +152,7 @@ export default function Packages() {
               </ul>
 
               {/* Note */}
-              <p className="text-slate-600 text-[11px] italic mb-5 mt-auto">{plan.note}</p>
+              <p className="text-muted text-[11px] italic mb-5 mt-auto">{plan.note}</p>
 
               {/* CTA */}
               <motion.button
@@ -178,12 +160,12 @@ export default function Packages() {
                 whileTap={{ scale: 0.97 }}
                 className={`w-full rounded-xl py-3 text-xs font-bold tracking-[2px] transition-all duration-300 ${
                   plan.popular
-                    ? 'bg-gradient-to-r from-neon-blue to-ice-dark text-white shadow-[0_6px_25px_rgba(0,174,239,0.3)]'
-                    : 'border text-white hover:bg-white/5'
+                    ? 'bg-brand-blue hover:bg-brand-blue-dark text-white shadow-[0_6px_20px_rgba(14,165,233,0.25)]'
+                    : 'border-2 hover:bg-light-alt'
                 }`}
                 style={
                   !plan.popular
-                    ? { borderColor: `${plan.color}30`, color: plan.color }
+                    ? { borderColor: `${plan.color}40`, color: plan.color }
                     : undefined
                 }
               >
@@ -195,8 +177,8 @@ export default function Packages() {
 
         {/* Add-Ons */}
         <AnimatedSection variant="scale-in" className="mt-8">
-          <div className="glass-card rounded-2xl p-8 grid grid-cols-1 md:grid-cols-2 gap-0" style={{ borderColor: 'rgba(251,191,36,0.15)' }}>
-            <div className="md:border-r md:border-white/5 md:pr-8">
+          <div className="bg-white border border-light-border rounded-2xl p-8 grid grid-cols-1 md:grid-cols-2 gap-0 shadow-[0_10px_30px_rgba(0,0,0,0.05)]">
+            <div className="md:border-r md:border-light-border md:pr-8">
               <h4 className="text-gold text-[11px] tracking-[3px] font-bold mb-5 flex items-center gap-2">
                 <Zap size={12} />
                 ADD-ONS
@@ -204,17 +186,17 @@ export default function Packages() {
               {addOns.map((item) => (
                 <div
                   key={item.name}
-                  className="flex justify-between items-center border-b border-white/5 py-2.5"
+                  className="flex justify-between items-center border-b border-light-border py-2.5"
                 >
-                  <span className="text-slate-400 text-[13px]">{item.name}</span>
+                  <span className="text-body text-[13px]">{item.name}</span>
                   <span className="text-gold text-[13px] font-semibold">{item.price}</span>
                 </div>
               ))}
             </div>
             <div className="md:pl-8 mt-6 md:mt-0 flex items-center">
-              <div className="bg-[rgba(251,191,36,0.05)] border border-[rgba(251,191,36,0.12)] rounded-xl p-5">
-                <p className="text-[#d4a017] italic text-[13px] leading-relaxed">
-                  <strong className="text-gold not-italic">Pro Tip:</strong> Most customers go with the Premium package — it gives the best results for the price!
+              <div className="bg-amber-50 border border-amber-200/50 rounded-xl p-5">
+                <p className="text-amber-700 italic text-[13px] leading-relaxed">
+                  <strong className="text-amber-600 not-italic">Pro Tip:</strong> Most customers go with the Premium package — it gives the best results for the price!
                 </p>
               </div>
             </div>

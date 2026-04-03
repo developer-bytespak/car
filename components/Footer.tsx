@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Clock, ArrowUp } from 'lucide-react'
+import { Mail, Phone, MapPin, Clock } from 'lucide-react'
 import Image from 'next/image'
 
 const footerLinks = [
@@ -20,23 +20,9 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-dark-deep border-t border-white/[0.04] overflow-hidden">
-      {/* Subtle glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[radial-gradient(ellipse_at_center,rgba(0,174,239,0.05),transparent_70%)] pointer-events-none" />
-
-      {/* Back to top */}
-      <div className="relative z-10 flex justify-center -mt-5">
-        <motion.a
-          href="#"
-          whileHover={{ y: -4, boxShadow: '0 8px 30px rgba(255,106,0,0.3)' }}
-          className="w-10 h-10 rounded-full bg-gradient-to-r from-neon-orange to-fire-light flex items-center justify-center text-white shadow-lg cursor-pointer"
-        >
-          <ArrowUp size={16} />
-        </motion.a>
-      </div>
-
+    <footer className="relative bg-light-alt border-t border-light-border overflow-hidden">
       <div className="relative z-10 max-w-6xl mx-auto px-5 md:px-10 pt-12 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 pb-10 border-b border-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-16 pb-10 border-b border-light-border">
           {/* Brand */}
           <div>
             <div className="mb-4">
@@ -48,7 +34,7 @@ export default function Footer() {
                 className="h-20 w-auto object-contain"
               />
             </div>
-            <p className="text-slate-600 text-sm leading-relaxed mb-5">
+            <p className="text-body text-sm leading-relaxed mb-5">
               Professional mobile auto detailing — we bring the shine to your driveway. Premium products, expert hands, showroom results.
             </p>
             <div className="flex gap-3">
@@ -59,11 +45,11 @@ export default function Footer() {
                   aria-label={s.name}
                   whileHover={{
                     y: -3,
-                    borderColor: '#00AEEF',
-                    color: '#00AEEF',
-                    boxShadow: '0 0 15px rgba(0,174,239,0.2)',
+                    borderColor: '#0EA5E9',
+                    color: '#0EA5E9',
+                    boxShadow: '0 4px 15px rgba(14,165,233,0.15)',
                   }}
-                  className="w-9 h-9 rounded-full border border-white/[0.07] flex items-center justify-center text-slate-600 text-xs font-bold transition-colors"
+                  className="w-9 h-9 rounded-full border border-light-border bg-white flex items-center justify-center text-muted text-xs font-bold transition-colors"
                 >
                   {s.label}
                 </motion.a>
@@ -73,7 +59,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white text-[11px] tracking-[3px] uppercase font-bold mb-5">
+            <h4 className="text-heading text-[11px] tracking-[3px] uppercase font-bold mb-5">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -81,10 +67,10 @@ export default function Footer() {
                 <li key={link.label}>
                   <motion.a
                     href={link.href}
-                    whileHover={{ x: 4, color: '#00AEEF' }}
-                    className="text-slate-600 text-sm hover:text-neon-blue transition-colors flex items-center gap-2"
+                    whileHover={{ x: 4, color: '#0EA5E9' }}
+                    className="text-body text-sm hover:text-brand-blue transition-colors flex items-center gap-2"
                   >
-                    <span className="w-1 h-1 rounded-full bg-neon-orange inline-block flex-shrink-0" />
+                    <span className="w-1 h-1 rounded-full bg-brand-orange inline-block flex-shrink-0" />
                     {link.label}
                   </motion.a>
                 </li>
@@ -94,15 +80,15 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-white text-[11px] tracking-[3px] uppercase font-bold mb-5">
+            <h4 className="text-heading text-[11px] tracking-[3px] uppercase font-bold mb-5">
               Get In Touch
             </h4>
             <ul className="space-y-4">
               {[
-                { icon: Mail, label: 'Email', value: 'info@superiorshinedetailing.com', color: '#00AEEF' },
-                { icon: Phone, label: 'Phone', value: '(555) 123-4567', color: '#FF6A00' },
+                { icon: Mail, label: 'Email', value: 'info@superiorshinedetailing.com', color: '#0EA5E9' },
+                { icon: Phone, label: 'Phone', value: '(555) 123-4567', color: '#F97316' },
                 { icon: MapPin, label: 'Service Area', value: 'Local & Surrounding Areas', color: '#22c55e' },
-                { icon: Clock, label: 'Hours', value: 'Mon–Sat · 7 AM – 7 PM', color: '#fbbf24' },
+                { icon: Clock, label: 'Hours', value: 'Mon–Sat · 7 AM – 7 PM', color: '#f59e0b' },
               ].map((item) => {
                 const Icon = item.icon
                 return (
@@ -110,15 +96,15 @@ export default function Footer() {
                     <span
                       className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
                       style={{
-                        background: `${item.color}12`,
-                        border: `1px solid ${item.color}18`,
+                        background: `${item.color}10`,
+                        border: `1px solid ${item.color}20`,
                       }}
                     >
                       <Icon size={14} style={{ color: item.color }} />
                     </span>
                     <div>
-                      <span className="text-slate-700 text-[10px] tracking-[2px] uppercase block">{item.label}</span>
-                      <span className="text-slate-500 text-sm">{item.value}</span>
+                      <span className="text-muted text-[10px] tracking-[2px] uppercase block">{item.label}</span>
+                      <span className="text-body text-sm">{item.value}</span>
                     </div>
                   </li>
                 )
@@ -129,12 +115,12 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center pt-6 gap-4">
-          <p className="text-slate-700 text-[11px] tracking-widest">
+          <p className="text-muted text-[11px] tracking-widest">
             &copy; 2025 Superior Shine Auto Detailing. All Rights Reserved.
           </p>
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-pkg-green animate-slide-dot" />
-            <span className="text-slate-600 text-[11px] tracking-[2px]">
+            <span className="text-muted text-[11px] tracking-[2px]">
               Currently accepting bookings
             </span>
           </div>
