@@ -10,14 +10,14 @@ const steps = [
     icon: CalendarDays,
     title: 'Book Online',
     desc: 'Pick a date and time that works for you. Quick and easy scheduling.',
-    color: '#FF6A00',
+    color: '#F97316',
   },
   {
     num: '02',
     icon: MapPin,
     title: 'We Come to You',
     desc: 'Our team arrives at your location fully equipped and ready to shine.',
-    color: '#00AEEF',
+    color: '#0EA5E9',
   },
   {
     num: '03',
@@ -46,30 +46,26 @@ export default function HowItWorks() {
   const lineWidth = useTransform(scrollYProgress, [0, 1], ['0%', '100%'])
 
   return (
-    <section id="how-it-works" className="relative py-20 md:py-32 px-5 md:px-10 overflow-hidden">
-      <div className="absolute inset-0 bg-dark-bg" />
-      <div className="absolute inset-0 section-glow-orange pointer-events-none" />
-
+    <section id="how-it-works" className="relative py-20 md:py-32 px-5 md:px-10 overflow-hidden bg-white">
       <div className="max-w-5xl mx-auto relative z-10">
         <AnimatedSection variant="fade-up" className="text-center mb-16">
-          <span className="text-neon-orange text-[11px] tracking-[3px] font-bold uppercase">
+          <span className="text-brand-orange text-[11px] tracking-[3px] font-bold uppercase">
             THE PROCESS
           </span>
-          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-white mt-3">
-            HOW IT <span className="text-neon-orange text-neon-orange-glow">WORKS</span>
+          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-heading mt-3">
+            HOW IT <span className="text-brand-orange">WORKS</span>
           </h2>
-          <div className="glow-divider max-w-[200px] mx-auto mt-6" />
+          <div className="section-divider max-w-[200px] mx-auto mt-6" />
         </AnimatedSection>
 
         <div ref={lineRef} className="relative">
           {/* Animated connecting line — desktop */}
-          <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-[2px] bg-white/5 rounded-full">
+          <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-[2px] bg-light-border rounded-full">
             <motion.div
               className="absolute inset-y-0 left-0 rounded-full"
               style={{
                 width: lineWidth,
-                background: 'linear-gradient(90deg, #FF6A00, #00AEEF, #22c55e, #a855f7)',
-                boxShadow: '0 0 15px rgba(0,174,239,0.5), 0 0 30px rgba(0,174,239,0.2)',
+                background: 'linear-gradient(90deg, #F97316, #0EA5E9, #22c55e, #a855f7)',
               }}
             />
           </div>
@@ -89,13 +85,13 @@ export default function HowItWorks() {
                   <motion.div
                     whileHover={{
                       scale: 1.15,
-                      boxShadow: `0 0 30px ${step.color}40, 0 0 60px ${step.color}15`,
+                      boxShadow: `0 10px 30px ${step.color}25`,
                     }}
-                    className="w-20 h-20 rounded-full flex items-center justify-center mb-5 cursor-pointer transition-all duration-300"
+                    className="w-20 h-20 rounded-full flex items-center justify-center mb-5 cursor-pointer transition-all duration-300 bg-white"
                     style={{
-                      background: `${step.color}10`,
-                      border: `2px solid ${step.color}40`,
-                      boxShadow: `0 0 20px ${step.color}15`,
+                      background: `${step.color}08`,
+                      border: `2px solid ${step.color}30`,
+                      boxShadow: `0 8px 25px ${step.color}10`,
                     }}
                   >
                     <Icon size={28} style={{ color: step.color }} />
@@ -104,15 +100,15 @@ export default function HowItWorks() {
                   {/* Step number */}
                   <span
                     className="font-display text-sm tracking-[3px] mb-2"
-                    style={{ color: `${step.color}80` }}
+                    style={{ color: `${step.color}90` }}
                   >
                     STEP {step.num}
                   </span>
 
-                  <h4 className="text-white text-sm font-bold tracking-wide mb-2">
+                  <h4 className="text-heading text-sm font-bold tracking-wide mb-2">
                     {step.title}
                   </h4>
-                  <p className="text-slate-500 text-xs leading-relaxed max-w-[180px]">{step.desc}</p>
+                  <p className="text-muted text-xs leading-relaxed max-w-[180px]">{step.desc}</p>
                 </motion.div>
               )
             })}

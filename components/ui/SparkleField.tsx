@@ -8,7 +8,7 @@ function seededRandom(seed: number) {
 }
 
 function generateParticles() {
-  return Array.from({ length: 30 }, (_, i) => {
+  return Array.from({ length: 20 }, (_, i) => {
     const r1 = seededRandom(i * 7 + 1)
     const r2 = seededRandom(i * 13 + 2)
     const r3 = seededRandom(i * 19 + 3)
@@ -22,8 +22,8 @@ function generateParticles() {
       size: r3 * 3 + 1,
       duration: r4 * 4 + 3,
       delay: r5 * 3,
-      color: r6 > 0.5 ? '#00AEEF' : '#FF6A00',
-      opacity: r3 * 0.5 + 0.2,
+      color: r6 > 0.5 ? '#0EA5E9' : '#F97316',
+      opacity: r3 * 0.2 + 0.05,
     }
   })
 }
@@ -51,7 +51,6 @@ export default function SparkleField() {
             width: p.size,
             height: p.size,
             background: p.color,
-            boxShadow: `0 0 ${p.size * 4}px ${p.color}`,
           }}
           animate={{
             opacity: [0, p.opacity, 0],

@@ -35,19 +35,16 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="relative py-20 md:py-32 px-5 md:px-10 overflow-hidden">
-      <div className="absolute inset-0 bg-dark-bg" />
-      <div className="absolute inset-0 section-glow-blue pointer-events-none" />
-
+    <section className="relative py-20 md:py-32 px-5 md:px-10 overflow-hidden bg-white">
       <div className="max-w-3xl mx-auto relative z-10">
         <AnimatedSection variant="fade-up" className="text-center mb-14">
-          <span className="text-neon-orange text-[11px] tracking-[3px] font-bold uppercase">
+          <span className="text-brand-orange text-[11px] tracking-[3px] font-bold uppercase">
             GOT QUESTIONS?
           </span>
-          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-white mt-3">
-            FREQUENTLY <span className="text-neon-blue text-neon-glow">ASKED</span>
+          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-heading mt-3">
+            FREQUENTLY <span className="text-brand-blue">ASKED</span>
           </h2>
-          <div className="glow-divider max-w-[200px] mx-auto mt-6" />
+          <div className="section-divider max-w-[200px] mx-auto mt-6" />
         </AnimatedSection>
 
         <div className="space-y-3">
@@ -57,17 +54,17 @@ export default function FAQ() {
               <AnimatedSection key={i} variant="fade-up" delay={i * 0.05}>
                 <motion.div
                   animate={{
-                    borderColor: isOpen ? 'rgba(0,174,239,0.3)' : 'rgba(255,255,255,0.06)',
-                    boxShadow: isOpen ? '0 0 30px rgba(0,174,239,0.08)' : 'none',
+                    borderColor: isOpen ? 'rgba(14,165,233,0.3)' : '#E2E8F0',
+                    boxShadow: isOpen ? '0 10px 30px rgba(0,0,0,0.06)' : '0 4px 15px rgba(0,0,0,0.03)',
                   }}
-                  className="glass-card rounded-xl overflow-hidden transition-all"
+                  className="bg-white border border-light-border rounded-xl overflow-hidden transition-all"
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     className="flex justify-between items-center w-full py-5 px-6 text-left group"
                   >
                     <span className={`text-[15px] font-semibold pr-4 transition-colors duration-300 ${
-                      isOpen ? 'text-neon-blue' : 'text-white group-hover:text-slate-300'
+                      isOpen ? 'text-brand-blue' : 'text-heading group-hover:text-body'
                     }`}>
                       {faq.q}
                     </span>
@@ -75,7 +72,7 @@ export default function FAQ() {
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                       className={`flex-shrink-0 transition-colors duration-300 ${
-                        isOpen ? 'text-neon-blue' : 'text-slate-600'
+                        isOpen ? 'text-brand-blue' : 'text-muted'
                       }`}
                     >
                       <ChevronDown size={18} />
@@ -91,8 +88,8 @@ export default function FAQ() {
                         className="overflow-hidden"
                       >
                         <div className="px-6 pb-5">
-                          <div className="w-12 h-[1px] bg-gradient-to-r from-neon-blue to-transparent mb-3" />
-                          <p className="text-slate-400 text-[14px] leading-relaxed">
+                          <div className="w-12 h-[1px] bg-gradient-to-r from-brand-blue to-transparent mb-3" />
+                          <p className="text-body text-[14px] leading-relaxed">
                             {faq.a}
                           </p>
                         </div>
