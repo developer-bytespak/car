@@ -92,7 +92,7 @@ export default function Hero() {
           transition={{ delay: 0.65, duration: 0.7 }}
           className="text-slate-400 text-lg md:text-xl max-w-xl mx-auto leading-relaxed mb-10"
         >
-          Where precision meets perfection. Professional mobile detailing that transforms your car into a showroom masterpiece.
+          {/* Where precision meets perfection. Professional mobile detailing that transforms your car into a showroom masterpiece. */}
         </motion.p>
 
         {/* Contact pills */}
